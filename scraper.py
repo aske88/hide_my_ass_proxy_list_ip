@@ -109,10 +109,6 @@ class HideMyAssSpider(CrawlSpider):
             loader = WebsiteLoader(selector=link)
             loader.add_value('ipaddress', ipaddress)
             loader.add_xpath('port', 'td[3]/text()')
-            loader.add_xpath('country', 'td[4]/span/text()')
-            loader.add_xpath('_type', 'td[7]/text()')
-            loader.add_xpath('anonimity', 'td[8]/text()')
-            loader.add_value('url', response.url)
 
             item = loader.load_item()
             
@@ -120,14 +116,8 @@ class HideMyAssSpider(CrawlSpider):
 
                         
 class Website(Item):
-    url = Field()
     ipaddress = Field()
     port = Field()
-    country = Field()
-    speed = Field()
-    connection_time = Field()
-    _type = Field()
-    anonimity = Field()
     
 
 class WebsiteLoader(XPathItemLoader):
